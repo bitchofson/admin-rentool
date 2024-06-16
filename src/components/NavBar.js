@@ -33,9 +33,6 @@ export const NavBar = () => {
     console.log('Update active link clicked');
     setActiveLink(value);
   };
-  if (auth.isLoading) {
-    return <></>;
-  }
 
   let isloggedIn;
   if (auth.isAuthenticated) {
