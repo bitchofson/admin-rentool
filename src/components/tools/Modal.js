@@ -190,7 +190,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
                 marginTop: '1px',
               }}
             >
-              Цена в час:
+              Цена в день:
             </label>
             <input
               type='number'

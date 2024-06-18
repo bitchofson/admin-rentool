@@ -56,7 +56,6 @@ const ToolsPage = () => {
       const formData = new FormData();
       formData.append('image', Data.image);
       formData.append('tool', new Blob([JSON.stringify(jsonData)], { type: 'application/json' }));
-      console.log('TOKEN:', auth.user.access_token);
 
       let envString = 'REACT_APP_MICROSERVICE_TOOL';
       const response = await fetch(process.env[envString] + `/api/v1/tools/`, {
@@ -269,7 +268,7 @@ const ToolsPage = () => {
           <tr style={{ color: 'black', backgroundColor: '#f2f2f2' }}>
             <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Изображение</th>
             <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Модель</th>
-            <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Цена аренды в час</th>
+            <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Цена аренды в день</th>
             <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Кол-во инструментов</th>
             <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Бренд</th>
             <th style={{ padding: '10px', border: '1px solid #dddddd' }}>Описание</th>
