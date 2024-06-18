@@ -38,7 +38,10 @@ const RentsPage = () => {
                 let envString = 'REACT_APP_MICROSERVICE_RENT';
                 const response = await fetch(`${process.env[envString]}/api/v1/rents/${formData.id}/complete`, {
                     method: 'PATCH',
-                    headers: { "Content-Type": "application/json", },
+                    headers: {
+                        Authorization: `Bearer ${auth.user.access_token}`,
+                        "Content-Type": "application/json",
+                    },
                 });
                 if (response.ok) {
                     fetchRents(currentPage);
@@ -61,7 +64,10 @@ const RentsPage = () => {
                 let envString = 'REACT_APP_MICROSERVICE_RENT';
                 const response = await fetch(`${process.env[envString]}/api/v1/rents/${formData.id}`, {
                     method: 'PUT',
-                    headers: { "Content-Type": "application/json", },
+                    headers: {
+                        Authorization: `Bearer ${auth.user.access_token}`,
+                        "Content-Type": "application/json",
+                    },
                     body: body,
                 });
                 if (response.ok) {

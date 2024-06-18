@@ -56,11 +56,14 @@ const ToolsPage = () => {
       const formData = new FormData();
       formData.append('image', Data.image);
       formData.append('tool', new Blob([JSON.stringify(jsonData)], { type: 'application/json' }));
-
+      console.log('TOKEN:', auth.user.access_token);
 
       let envString = 'REACT_APP_MICROSERVICE_TOOL';
       const response = await fetch(process.env[envString] + `/api/v1/tools/`, {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${auth.user.access_token}`,
+        },
         body: formData,
       });
 
@@ -102,9 +105,9 @@ const ToolsPage = () => {
       let envString = 'REACT_APP_MICROSERVICE_TOOL';
       await fetch(process.env[envString] + `/api/v1/tools/${id}`, {
         method: 'DELETE',
-        // headers: {
-        //   Authorization: `Bearer ${auth.user.access_token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${auth.user.access_token}`,
+        },
       });
       setTools(prevTools => prevTools.filter(tool => tool.id !== id));
     } catch (error) {
