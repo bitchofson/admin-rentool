@@ -17,6 +17,9 @@ const RentsPage = () => {
             let envString = 'REACT_APP_MICROSERVICE_RENT';
             const response = await fetch(`${process.env[envString]}/api/v1/rents/?page=${page}&size=${pageSize}&sortParam=PRICE_ASC`, {
                 method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${auth.user.access_token}`,
+                },
             });
             const data = await response.json();
             if (data != null) {
